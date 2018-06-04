@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage  extends PageWeb{
 	
-	@FindBy(xpath="//*[@class='nevo-header-navigation-menu-item nxevo-js-header-menu-item FLIGHTS']")
+	@FindBy(xpath="//*[contains(@class, 'nevo-header-navigation-menu-item nevo-js-header-menu-item')]"
+			+ "//*[@class='nevo-header-navigation-menu-text' and text()='Passagens' or text()='Vuelos']")
 	private WebElement vuelos;
 	
 	@FindBy(xpath= "//*[@class='nevo-header-navigation-menu-item nevo-js-header-menu-item HOTELS nevo--active']")
