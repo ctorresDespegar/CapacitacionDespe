@@ -28,6 +28,8 @@ public class Configuracion {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
 	    wait = new WebDriverWait(driver,10);
+		driver.get("https://www.despegar.com.ar/");
+		driver.navigate().refresh();
 	}
 	
 	
@@ -48,14 +50,14 @@ public class Configuracion {
 		case CHROME:
 			System.setProperty(CHROME_KEY, 
 					System.getProperty("user.dir") +
-					"/src/main/java/Despegar/com/despegar/drivers/" + osName() + "/chromedriver");
+					"/drivers/" + osName() + "/chromedriver");
 			driver = new ChromeDriver();
 			break;
 			
 		case FIREFOX:
 			System.setProperty(FIREFOX_KEY, 
 					System.getProperty("user.dir") + 
-					"/src/main/java/Despegar/com/despegar/drivers/" + osName() + "/geckodriver");
+					"/drivers/" + osName() + "/geckodriver");
 			driver= new FirefoxDriver();
 			break;
 			
