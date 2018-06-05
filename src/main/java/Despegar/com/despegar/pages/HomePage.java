@@ -10,7 +10,7 @@ public class HomePage extends PageWeb {
 			+ "//*[@class='nevo-header-navigation-menu-text' and text()='Passagens' or text()='Vuelos']")
 	private WebElement vuelos;
 
-	@FindBy(xpath = "//*[@class='nevo-header-navigation-menu-item nevo-js-header-menu-item HOTELS nevo--active']")
+	@FindBy(className = "nevo-icon-hotels")
 	private WebElement alojamiento;
 
 	@FindBy(xpath = "//*[@class='nevo-header-navigation-menu-item nevo-js-header-menu-item PACKAGES']")
