@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Vuelos extends PageWeb {
 
@@ -30,10 +31,8 @@ public class Vuelos extends PageWeb {
 		destino.clear();
 		destino.sendKeys(destination);
 		selectOption(getListCitiesOrAirports(), destination).click();
-		Thread.sleep(2000);
 		fechas(fechaSalida, fechaRetorno);
-		Thread.sleep(2000);
-		buscarBtn.click();
+		wait.until(ExpectedConditions.elementToBeClickable(buscarBtn)).click();
 		return new ResultadosVuelos(driver);
 	}
 

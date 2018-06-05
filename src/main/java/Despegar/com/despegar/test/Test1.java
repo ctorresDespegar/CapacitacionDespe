@@ -13,7 +13,7 @@ public class Test1 extends Configuracion {
 		HomePage home = new HomePage(driver);
 		Vuelos vuelos = home.clickOnVuelos();
 		vuelos.busqueda("Roma", "Madrid", "16/08/2018", "19/08/2018");
-		
+		Thread.sleep(10000);
 	}
 
 }

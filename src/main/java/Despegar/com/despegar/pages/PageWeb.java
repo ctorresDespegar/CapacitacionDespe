@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.CalendarUtil;
 
 /**
@@ -30,6 +32,7 @@ public class PageWeb {
 	private WebElement autoCompleteList;
 
 	protected WebDriver driver;
+	protected WebDriverWait wait;
 
 	/**
 	 * Constructor
@@ -38,12 +41,13 @@ public class PageWeb {
 	 */
 	public PageWeb(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(driver, this);
 	}
 
 	private void setDateEntry(String dateEntry) throws Exception {
 		CalendarUtil calendar = new CalendarUtil(dateEntry);
-		entryDate.click();
+		wait.until(ExpectedConditions.elementToBeClickable(entryDate)).click();
 		for (int i = 0; i < calendar.getMonth(); i++) {
 			if (calendar.isIncrement()) {
 				nextMonth.click();
