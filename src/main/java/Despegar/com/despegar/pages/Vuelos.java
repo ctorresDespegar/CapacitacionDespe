@@ -26,10 +26,10 @@ public class Vuelos extends PageWeb {
 			throws Exception {
 		origen.clear();
 		origen.sendKeys(origin);
-		selectOption(getListCitiesOrAirports(), origin);
+		selectOption(getListCitiesOrAirports(), origin).click();
 		destino.clear();
 		destino.sendKeys(destination);
-		selectOption(getListCitiesOrAirports(), destination);
+		selectOption(getListCitiesOrAirports(), destination).click();
 		fechas(fechaSalida, fechaRetorno);
 		buscarBtn.click();
 		return new ResultadosVuelos(driver);
