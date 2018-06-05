@@ -30,7 +30,9 @@ public class Vuelos extends PageWeb {
 		destino.clear();
 		destino.sendKeys(destination);
 		selectOption(getListCitiesOrAirports(), destination).click();
+		Thread.sleep(2000);
 		fechas(fechaSalida, fechaRetorno);
+		Thread.sleep(2000);
 		buscarBtn.click();
 		return new ResultadosVuelos(driver);
 	}

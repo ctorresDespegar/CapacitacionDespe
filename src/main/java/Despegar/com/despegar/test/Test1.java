@@ -12,7 +12,7 @@ public class Test1 extends Configuracion {
 	public void prueba() throws Exception {
 		HomePage home = new HomePage(driver);
 		Vuelos vuelos = home.clickOnVuelos();
-		vuelos.busqueda("Roma", "Madrid", "16/08/2018", "16/08/2018");
+		vuelos.busqueda("Roma", "Madrid", "16/08/2018", "19/08/2018");
 		
 	}
 
