@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.CalendarUtil;
 
 /**
@@ -14,20 +16,23 @@ import utils.CalendarUtil;
  */
 public class PageWeb {
 
-	@FindBy(xpath = "//*[@class='sbox-button-default sbox-max-width-container']"
-			+ "//*[@class='sbox-3-btn -secondary -md sbox-search']")
+	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//*[@class='btn-text']")
 	protected WebElement buscarBtn;
 
-	@FindBy(xpath = "//*[@class='input-container sbox-checkin-date-container']")
-	protected WebElement entryDate;
+	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date')]")
+	private WebElement entryDate;
+
+	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkout-date') or contains(@class,'flight-end-date')]")
+	private WebElement departureDate;
 
 	@FindBy(className = "_dpmg2--controls-next")
-	protected WebElement nextMonth;
+	private WebElement nextMonth;
 
 	@FindBy(xpath = ".//*[@class='ac-group-items' or @class='geo-autocomplete-list']")
 	private WebElement autoCompleteList;
 
 	protected WebDriver driver;
+	protected WebDriverWait wait;
 
 	/**
 	 * Constructor
@@ -36,12 +41,13 @@ public class PageWeb {
 	 */
 	public PageWeb(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(driver, this);
 	}
 
 	private void setDateEntry(String dateEntry) throws Exception {
 		CalendarUtil calendar = new CalendarUtil(dateEntry);
-		entryDate.click();
+		wait.until(ExpectedConditions.elementToBeClickable(entryDate)).click();
 		for (int i = 0; i < calendar.getMonth(); i++) {
 			if (calendar.isIncrement()) {
 				nextMonth.click();

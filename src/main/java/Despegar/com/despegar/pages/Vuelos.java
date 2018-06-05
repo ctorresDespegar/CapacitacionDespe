@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Vuelos extends PageWeb {
 
@@ -26,12 +27,12 @@ public class Vuelos extends PageWeb {
 			throws Exception {
 		origen.clear();
 		origen.sendKeys(origin);
-		selectOption(getListCitiesOrAirports(), origin);
+		selectOption(getListCitiesOrAirports(), origin).click();
 		destino.clear();
 		destino.sendKeys(destination);
-		selectOption(getListCitiesOrAirports(), destination);
+		selectOption(getListCitiesOrAirports(), destination).click();
 		fechas(fechaSalida, fechaRetorno);
-		buscarBtn.click();
+		wait.until(ExpectedConditions.elementToBeClickable(buscarBtn)).click();
 		return new ResultadosVuelos(driver);
 	}
 
