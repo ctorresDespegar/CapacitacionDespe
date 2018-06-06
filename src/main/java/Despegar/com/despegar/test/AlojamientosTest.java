@@ -15,6 +15,7 @@ public class AlojamientosTest extends Configuracion{
 		Alojamientos alojamientos = home.clickOnAlojamientos();
 		alojamientos.busquedaAlojamiento("Roma", "16/08/2018", "19/08/2018");
 		
+		
 	}
 
 }

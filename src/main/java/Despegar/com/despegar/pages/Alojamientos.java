@@ -5,11 +5,12 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Alojamientos extends PageWeb {
 
 	@FindBy(xpath = "//*[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")
-	  private WebElement destino;
+	private WebElement destino;
 
 	public Alojamientos(WebDriver driver) {
 		super(driver);
@@ -21,7 +22,7 @@ public class Alojamientos extends PageWeb {
 		destino.sendKeys(destination);
 		selectOption(getListCitiesOrAirports(), destination).click();
 		fechas(fechaSalida, fechaRetorno);
-		buscarBtn.click();
+		wait.until(ExpectedConditions.elementToBeClickable(buscarBtn)).click();
 		return new ResultadosAlojamientos(driver);
 
 	}
