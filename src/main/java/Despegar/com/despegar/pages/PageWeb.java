@@ -47,14 +47,14 @@ public class PageWeb {
 
 	private void setDateEntry(String dateEntry) throws Exception {
 		CalendarUtil calendar = new CalendarUtil(dateEntry);
-		wait.until(ExpectedConditions.elementToBeClickable(entryDate)).click();
+		waitElementIsClickable(entryDate).click();
 		for (int i = 0; i < calendar.getMonth(); i++) {
 			if (calendar.isIncrement()) {
 				nextMonth.click();
 			}
 		}
-		driver.findElement(By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-				.click();
+		waitElementIsClickable(driver.findElement(
+				By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))).click();
 	}
 
 	private void setDateDeparture(String dateEntry, String dateDeparture) throws Exception {
@@ -66,9 +66,9 @@ public class PageWeb {
 		int dayDeparture = calendar.getDay();
 
 		if (monthDeparture - monthEntry == 0 && dayDeparture > dayEntry) {
-			driver.findElement(
-					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-					.click();
+			waitElementIsClickable(driver.findElement(
+					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]")))
+							.click();
 			return;
 		}
 
@@ -78,9 +78,9 @@ public class PageWeb {
 					nextMonth.click();
 				}
 			}
-			driver.findElement(
-					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-					.click();
+			waitElementIsClickable(driver.findElement(
+					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]")))
+							.click();
 		} else {
 			throw new Exception("No se pueden realizar una reserva por mas de 1 mes....");
 		}
@@ -128,5 +128,22 @@ public class PageWeb {
 	protected List<WebElement> getListCitiesOrAirports() throws Exception {
 		Thread.sleep(2000);
 		return autoCompleteList.findElements(By.tagName("li"));
+	}
+
+	/**
+	 * Espera los segundos indicados
+	 * 
+	 * @param seconds
+	 * @throws InterruptedException
+	 * @throws Exception
+	 */
+	public WebElement waitElementIsClickable(WebElement element) throws Exception {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (Exception e) {
+			throw new Exception("El elemento" + element + "no se encontro en la pagina para hacer click");
+		}
+
+		return element;
 	}
 }
