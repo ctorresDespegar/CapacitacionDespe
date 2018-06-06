@@ -11,6 +11,9 @@ public class Alojamientos extends PageWeb {
 
 	@FindBy(xpath = "//*[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")
 	private WebElement destino;
+	
+	@FindBy(xpath = "//em[@class='btn-text' and 1]")
+	protected WebElement buscarButton;
 
 	public Alojamientos(WebDriver driver) {
 		super(driver);
@@ -22,7 +25,7 @@ public class Alojamientos extends PageWeb {
 		destino.sendKeys(destination);
 		selectOption(getListCitiesOrAirports(), destination).click();
 		fechas(fechaSalida, fechaRetorno);
-		wait.until(ExpectedConditions.elementToBeClickable(buscarBtn)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(buscarButton)).click();
 		return new ResultadosAlojamientos(driver);
 
 	}
