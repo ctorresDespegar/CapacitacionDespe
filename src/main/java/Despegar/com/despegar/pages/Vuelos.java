@@ -18,6 +18,9 @@ public class Vuelos extends PageWeb {
 	@FindBy(xpath = "//*[@class='input-tag sbox-main-focus sbox-bind-reference-flight-roundtrip-destination-input"
 			+ " sbox-secondary sbox-places-second places-inline']")
 	private WebElement destino;
+	
+	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//em[@class='btn-text']")
+	protected WebElement buscarBtn;
 
 	public Vuelos(WebDriver driver) {
 		super(driver);

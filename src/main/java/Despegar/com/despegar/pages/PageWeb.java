@@ -16,8 +16,6 @@ import utils.CalendarUtil;
  */
 public class PageWeb {
 
-	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//em[@class='btn-text']")
-	protected WebElement buscarBtn;
 
 	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date')]")
 	private WebElement entryDate;
@@ -141,7 +139,7 @@ public class PageWeb {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
-			throw new Exception("El elemento" + element + "no se encontro en la pagina para hacer click");
+			throw new Exception("El elemento" + element + " no se encontro en la pagina para hacer click");
 		}
 
 		return element;
