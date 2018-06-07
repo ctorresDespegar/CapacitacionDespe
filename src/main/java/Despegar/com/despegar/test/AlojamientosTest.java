@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import com.sun.xml.internal.ws.protocol.soap.VersionMismatchException;
 
 import Despegar.com.despegar.config.Configuracion;
 import Despegar.com.despegar.pages.Alojamientos;
@@ -19,9 +18,12 @@ public class AlojamientosTest extends Configuracion {
 		HomePage home = new HomePage(driver);
 		Alojamientos alojamientos = home.clickOnAlojamientos();
 		alojamientos.busquedaAlojamiento("Roma", "16/08/2018", "19/08/2018");
-		ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
-		WebElement mapaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mapResult")));
-		
+		alojamientos.buscarButtonResultados();
+		//ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
+		//WebElement mapaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mapResult")));
+		Thread.sleep(5000);
+		//WebElement ordenarPor = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("sorting"))));
+		//alojamientosResult.ordenarPorDropdown();
 		//alojamientosResult.verMapaSideBar();
 	}
 

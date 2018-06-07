@@ -29,4 +29,10 @@ public class Alojamientos extends PageWeb {
 		return new ResultadosAlojamientos(driver);
 
 	}
+
+	public void buscarButtonResultados() {
+		buscarButton.click();
+	}
+	
+	
 }

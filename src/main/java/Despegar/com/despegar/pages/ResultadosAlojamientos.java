@@ -8,6 +8,9 @@ public class ResultadosAlojamientos extends PageWeb{
 	
 	@FindBy (id = "mapResult")
 	private WebElement mapa;
+	
+	@FindBy (id = "sorting")
+	private WebElement ordenarPor;
 
 	public ResultadosAlojamientos(WebDriver driver) {
 		super(driver);
@@ -16,6 +19,10 @@ public class ResultadosAlojamientos extends PageWeb{
 	public boolean verMapaSideBar() {
 		mapa.isDisplayed();
 		return true;
+	}
+	
+	public void ordenarPorDropdown () {
+		ordenarPor.click();
 	}
 
 
