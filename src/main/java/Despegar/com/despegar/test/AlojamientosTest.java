@@ -1,11 +1,6 @@
 package Despegar.com.despegar.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
-
-
 import Despegar.com.despegar.config.Configuracion;
 import Despegar.com.despegar.pages.Alojamientos;
 import Despegar.com.despegar.pages.HomePage;
@@ -18,7 +13,7 @@ public class AlojamientosTest extends Configuracion {
 		HomePage home = new HomePage(driver);
 		Alojamientos alojamientos = home.clickOnAlojamientos();
 		alojamientos.busquedaAlojamiento("Roma", "16/08/2018", "19/08/2018");
-		alojamientos.buscarButtonResultados();
+		//alojamientos.buscarButtonResultados();
 		//ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
 		//WebElement mapaElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mapResult")));
 		Thread.sleep(5000);
