@@ -16,7 +16,7 @@ import utils.CalendarUtil;
  */
 public class PageWeb {
 
-	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//*[@class='btn-text']")
+	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//em[@class='btn-text']")
 	protected WebElement buscarBtn;
 
 	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date')]")
