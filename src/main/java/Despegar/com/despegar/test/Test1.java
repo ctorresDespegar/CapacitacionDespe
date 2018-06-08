@@ -15,7 +15,7 @@ public class Test1 extends Configuracion {
     String destino = map.get("destino");
     HomePage home = new HomePage(driver);
     Vuelos vuelos = home.clickOnVuelos();
-    vuelos.busqueda("Roma", "Madrid", "16/08/2018", "19/08/2018");
+    vuelos.busqueda(origen, destino, "16/08/2018", "19/08/2018");
     Thread.sleep(10000);
   }
 
