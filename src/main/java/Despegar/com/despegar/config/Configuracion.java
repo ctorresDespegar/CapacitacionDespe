@@ -24,7 +24,7 @@ public class Configuracion {
     protected WebDriverWait wait;
     
 
-	@BeforeTest
+	@BeforeClass
 	public void setUp() throws Exception{
 		browser(browsers.CHROME);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -75,7 +75,7 @@ public class Configuracion {
 		driver.manage().deleteAllCookies();
 	}
 	
-	@AfterTest
+	@AfterClass
 	public void tearDown(){
 		cleanUp();
 		driver.close();
