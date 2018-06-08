@@ -21,8 +21,9 @@ public class DataProviderPrueba {
   public Iterator<Object[]> probandoMetodo() throws Exception {
     String dataJson = "testdata.json";
 
-    URL resource = this.getClass().getResource("/");
-    String path = Paths.get(resource.toURI()).toFile().getAbsolutePath();
+//    URL resource = this.getClass().getResource("/");
+//    String path = Paths.get(resource.toURI()).toFile().getAbsolutePath();
+    String path = System.getProperty("user.dir") +"/src/main/resources";
     String absolutePath = path + "/" + dataJson;
 
     String dataFile = null;

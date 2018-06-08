@@ -7,7 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 
 
@@ -22,7 +24,7 @@ public class Configuracion {
     protected WebDriverWait wait;
     
 
-	@BeforeClass
+	@BeforeTest
 	public void setUp() throws Exception{
 		browser(browsers.CHROME);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -73,7 +75,7 @@ public class Configuracion {
 		driver.manage().deleteAllCookies();
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void tearDown(){
 		cleanUp();
 		driver.close();
