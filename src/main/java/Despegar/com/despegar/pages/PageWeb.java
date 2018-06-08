@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.CalendarUtil;
 
 /**
@@ -14,20 +16,21 @@ import utils.CalendarUtil;
  */
 public class PageWeb {
 
-	@FindBy(xpath = "//*[@class='sbox-button-default sbox-max-width-container']"
-			+ "//*[@class='sbox-3-btn -secondary -md sbox-search']")
-	protected WebElement buscarBtn;
 
-	@FindBy(xpath = "//*[@class='input-container sbox-checkin-date-container']")
-	protected WebElement entryDate;
+	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date')]")
+	private WebElement entryDate;
+
+	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkout-date') or contains(@class,'flight-end-date')]")
+	private WebElement departureDate;
 
 	@FindBy(className = "_dpmg2--controls-next")
-	protected WebElement nextMonth;
+	private WebElement nextMonth;
 
 	@FindBy(xpath = ".//*[@class='ac-group-items' or @class='geo-autocomplete-list']")
 	private WebElement autoCompleteList;
 
 	protected WebDriver driver;
+	protected WebDriverWait wait;
 
 	/**
 	 * Constructor
@@ -36,19 +39,20 @@ public class PageWeb {
 	 */
 	public PageWeb(WebDriver driver) {
 		this.driver = driver;
+		this.wait = new WebDriverWait(driver, 10);
 		PageFactory.initElements(driver, this);
 	}
 
 	private void setDateEntry(String dateEntry) throws Exception {
 		CalendarUtil calendar = new CalendarUtil(dateEntry);
-		entryDate.click();
+		waitElementIsClickable(entryDate).click();
 		for (int i = 0; i < calendar.getMonth(); i++) {
 			if (calendar.isIncrement()) {
 				nextMonth.click();
 			}
 		}
-		driver.findElement(By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-				.click();
+		waitElementIsClickable(driver.findElement(
+				By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))).click();
 	}
 
 	private void setDateDeparture(String dateEntry, String dateDeparture) throws Exception {
@@ -60,9 +64,9 @@ public class PageWeb {
 		int dayDeparture = calendar.getDay();
 
 		if (monthDeparture - monthEntry == 0 && dayDeparture > dayEntry) {
-			driver.findElement(
-					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-					.click();
+			waitElementIsClickable(driver.findElement(
+					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]")))
+							.click();
 			return;
 		}
 
@@ -72,9 +76,9 @@ public class PageWeb {
 					nextMonth.click();
 				}
 			}
-			driver.findElement(
-					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]"))
-					.click();
+			waitElementIsClickable(driver.findElement(
+					By.xpath("//div[" + (calendar.getMonth() + 1) + "]/div[4]/span[" + calendar.getDay() + "]")))
+							.click();
 		} else {
 			throw new Exception("No se pueden realizar una reserva por mas de 1 mes....");
 		}
@@ -122,5 +126,22 @@ public class PageWeb {
 	protected List<WebElement> getListCitiesOrAirports() throws Exception {
 		Thread.sleep(2000);
 		return autoCompleteList.findElements(By.tagName("li"));
+	}
+
+	/**
+	 * Espera que el emento este disponible para hacer click
+	 * 
+	 * @param element
+	 * @return
+	 * @throws Exception
+	 */
+	public WebElement waitElementIsClickable(WebElement element) throws Exception {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (Exception e) {
+			throw new Exception("El elemento" + element + " no se encontro en la pagina para hacer click");
+		}
+
+		return element;
 	}
 }

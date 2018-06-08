@@ -4,6 +4,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Vuelos extends PageWeb {
 
@@ -17,6 +18,9 @@ public class Vuelos extends PageWeb {
 	@FindBy(xpath = "//*[@class='input-tag sbox-main-focus sbox-bind-reference-flight-roundtrip-destination-input"
 			+ " sbox-secondary sbox-places-second places-inline']")
 	private WebElement destino;
+	
+	@FindBy(xpath = "//*[@class='sbox-button-default']//*[@class='sbox-3-btn -secondary -md sbox-search']//em[@class='btn-text']")
+	protected WebElement buscarBtn;
 
 	public Vuelos(WebDriver driver) {
 		super(driver);
@@ -26,12 +30,12 @@ public class Vuelos extends PageWeb {
 			throws Exception {
 		origen.clear();
 		origen.sendKeys(origin);
-		selectOption(getListCitiesOrAirports(), origin);
+		selectOption(getListCitiesOrAirports(), origin).click();
 		destino.clear();
 		destino.sendKeys(destination);
-		selectOption(getListCitiesOrAirports(), destination);
+		selectOption(getListCitiesOrAirports(), destination).click();
 		fechas(fechaSalida, fechaRetorno);
-		buscarBtn.click();
+		wait.until(ExpectedConditions.elementToBeClickable(buscarBtn)).click();
 		return new ResultadosVuelos(driver);
 	}
 
