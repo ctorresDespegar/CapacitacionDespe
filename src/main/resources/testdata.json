@@ -1,0 +1,14 @@
+[
+  {
+    "origen": "Buenos Aires",
+    "destino": "Miami"
+  },
+  {
+    "origen": "Montevideo",
+    "destino": "Lisboa"
+  },
+  {
+    "origen": "San Pablo",
+    "destino": "Londres"
+  }
+]
