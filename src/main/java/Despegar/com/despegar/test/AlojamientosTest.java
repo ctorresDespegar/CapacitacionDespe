@@ -20,7 +20,7 @@ public class AlojamientosTest extends Configuracion {
 		String fechaVuelta = map.get("fechaVuelta");
 		HomePage home = new HomePage(driver);
 		Alojamientos alojamientos = home.clickOnAlojamientos();
-		alojamientos.busquedaAlojamiento();
+		alojamientos.busquedaAlojamiento(origen, fechaIda, fechaVuelta);
 		ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
 		alojamientosResult.ordenarPorDropdown();
 		alojamientosResult.selectComboBox("Precio: menor a mayor");
