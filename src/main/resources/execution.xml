@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite data-provider-thread-count="1" name="Probando tests">
+  <listeners>
+    <listener class-name="Despegar.com.despegar.config.ExtentReportListener"/>
+  </listeners>
+
+  <test allow-return-values="true" name="Mobile Test">
+    <classes>
+      <class name="Despegar.com.despegar.test.Test1">
+        <methods>
+          <include name="prueba"/>
+        </methods>
+      </class>
+    </classes>
+    <!--<groups>
+      <run>
+        <include name="PROBANDO_GRUPO"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="Despegar.com.despegar.test.*"></package>
+    </packages>-->
+  </test>
+</suite>

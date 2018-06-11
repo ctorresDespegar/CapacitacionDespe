@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class Test1 extends Configuracion {
 
-  @Test(dataProvider = "probando", dataProviderClass = DataProviderPrueba.class)
+  @Test(dataProvider = "probando", dataProviderClass = DataProviderPrueba.class, groups = "PROBANDO_GRUPO")
   public void prueba(Map<String, String> map) throws Exception {
     String origen = map.get("origen");
     String destino = map.get("destino");
