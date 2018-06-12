@@ -15,12 +15,9 @@ public class AlojamientosTest extends Configuracion {
 
 	@Test(dataProvider = "alojamiento", dataProviderClass = DataProviderPrueba.class)
 	public void testAlojamiento (Map<String, String> map) throws Exception {
-		String origen = map.get("origen");
-		String fechaIda = map.get("fechaIda");
-		String fechaVuelta = map.get("fechaVuelta");
 		HomePage home = new HomePage(driver);
 		Alojamientos alojamientos = home.clickOnAlojamientos();
-		alojamientos.busquedaAlojamiento(origen, fechaIda, fechaVuelta);
+		alojamientos.busquedaAlojamiento(map.get("origen"), map.get("fechaIda"), map.get("fechaVuelta"));
 		ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
 		alojamientosResult.ordenarPorDropdown();
 		alojamientosResult.selectComboBox("Precio: menor a mayor");
