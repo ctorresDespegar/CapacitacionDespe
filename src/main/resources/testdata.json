@@ -1,14 +1,20 @@
 [
   {
     "origen": "Buenos Aires",
-    "destino": "Miami"
+    "destino": "Miami",
+    "fechaOrigen" : "20/06/2018",
+    "fechaDestino" : "25/06/2018"
   },
   {
     "origen": "Montevideo",
-    "destino": "Lisboa"
+    "destino": "Lisboa",
+    "fechaOrigen" : "23/11/2018",
+    "fechaDestino" : "27/11/2018"
   },
   {
     "origen": "San Pablo",
-    "destino": "Londres"
+    "destino": "Londres",
+    "fechaOrigen" : "28/06/2018",
+    "fechaDestino" : "30/06/2018"
   }
 ]

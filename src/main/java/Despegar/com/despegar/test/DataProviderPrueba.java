@@ -21,18 +21,18 @@ public class DataProviderPrueba {
 	@DataProvider(name = "alojamiento", parallel = false)
 	public Iterator<Object[]> dataAlojamiento() throws Exception {
 		jsonName = "data.json";
-		return probandoMetodo();
+		return data();
 
 	}
 
-	@DataProvider(name = "probando", parallel = false)
-	public Iterator<Object[]> probando() throws Exception {
+	@DataProvider(name = "vuelos", parallel = false)
+	public Iterator<Object[]> dataVuelos() throws Exception {
 		jsonName = "testdata.json";
-		return probandoMetodo();
+		return data();
 
 	}
 
-	private Iterator<Object[]> probandoMetodo() throws Exception {
+	private Iterator<Object[]> data() throws Exception {
 
 		// URL resource = this.getClass().getResource("/");
 		// String path = Paths.get(resource.toURI()).toFile().getAbsolutePath();
