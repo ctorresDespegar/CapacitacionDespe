@@ -10,6 +10,7 @@ import Despegar.com.despegar.config.Configuracion;
 import Despegar.com.despegar.pages.Alojamientos;
 import Despegar.com.despegar.pages.HomePage;
 import Despegar.com.despegar.pages.ResultadosAlojamientos;
+import Despegar.com.despegar.pages.VerDetallePage;
 
 public class AlojamientosTest extends Configuracion {
 
@@ -21,6 +22,8 @@ public class AlojamientosTest extends Configuracion {
 		ResultadosAlojamientos alojamientosResult = new ResultadosAlojamientos(driver);
 		alojamientosResult.ordenarPorDropdown();
 		alojamientosResult.selectComboBox("Precio: menor a mayor");
+		VerDetallePage verDetalle = alojamientosResult.verDetalleClick();
+		
 		
 		//WebElement ordenarPor = wait.until(ExpectedConditions.visibilityOfElementLocated((By.id("sorting"))));
 		//alojamientosResult.ordenarPorDropdown();
