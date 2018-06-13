@@ -2,6 +2,8 @@ package Despegar.com.despegar.config;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -72,7 +74,12 @@ public class Configuracion {
 
 	private void tearDown() {
 		cleanUp();
-		driver.close();
+	    Set<String> allWindows = driver.getWindowHandles();
+	    Iterator<String> windowIterator = allWindows.iterator();
+	    while (windowIterator.hasNext()) {
+	      driver.switchTo().window(windowIterator.next());
+	      driver.close();
+	    }
 		driver.quit();
 	}
 

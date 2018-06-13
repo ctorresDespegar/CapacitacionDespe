@@ -144,4 +144,16 @@ public class PageWeb {
 
 		return element;
 	}
+	
+	
+	  public void switchNewWindows(boolean newWindows) {
+		    String winHandleBefore = driver.getWindowHandle();
+		    if (newWindows) {
+		      for (String winHandle : driver.getWindowHandles()) {
+		    	  driver.switchTo().window(winHandle);
+		      }
+		    } else {
+		    	driver.switchTo().window(winHandleBefore);
+		    }
+		  }
 }
