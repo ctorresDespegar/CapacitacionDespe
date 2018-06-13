@@ -17,7 +17,7 @@ import utils.CalendarUtil;
 public class PageWeb {
 
 
-	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date')]")
+	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkin-date') or contains(@class,'flight-start-date') or contains (@class, 'input-container.sbox-checkin-date-container')]")
 	private WebElement entryDate;
 
 	@FindBy(xpath = "//div[@style='display: block;']//input[contains(@class,'sbox-checkout-date') or contains(@class,'flight-end-date')]")

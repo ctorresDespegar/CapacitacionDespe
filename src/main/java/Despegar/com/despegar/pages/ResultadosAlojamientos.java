@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ResultadosAlojamientos extends PageWeb {
 
-	@FindBy(xpath = "//*[@id=\"sorting\"]")
+	@FindBy(xpath = "//*[@id='sorting']")
 	private WebElement ordenarPor;
 
 	@FindBy(xpath = "//[@value='price_ascending'")
