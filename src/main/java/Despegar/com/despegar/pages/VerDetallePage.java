@@ -1,6 +1,7 @@
 package Despegar.com.despegar.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class VerDetallePage extends PageWeb{
@@ -9,8 +10,13 @@ public class VerDetallePage extends PageWeb{
 		super(driver);
 	}
 	
-	@FindBy (className = "hf-pricebox-detail-and-payment.col.-md-12.-eva-3-hide-small.hf-robot-see-detail")
-	private WebDriver precio;
+	@FindBy (xpath = ".//*[@id='hf-buy-button']")
+	private WebElement reservarAhora;
+	
+	public PagosPage reservarAhoraClick () {
+		reservarAhora.click();
+		return new PagosPage(driver);
+	}
 	
 
 }
